@@ -1,0 +1,27 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title %} ConcertList {% endblock %}
+
+{% block titlepage %}
+ لیست کنسرت ها
+{% endblock %}
+
+{% block mainContent %}
+{% if concerts %} 
+    <form action="" method="get">
+        {{searchForm}}
+        <button type="submit" class="btn btn-success">جستجو</button>
+    </form>
+    {% for concert in concerts %}
+        <div class="col-md-4">
+            <a href="{% url 'concert_app:detail' concert.id%}">
+                <div class="imageBox">
+                    <img src="{{ concert.poster.url }}" alt="" />
+                    {{concert}}
+                </div>
+            </a>
+        </div>
+    {% endfor %} 
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}
+{{concert.name}}
+{% endblock %}
+
+{% block titlepage %}
+جزییات کنسرت {{concert.name}}
+{% endblock %}
+
+{% block mainContent %}
+<div class="col-md-10">
+    <h3>نام کنسرت : {{concert.name}}</h3>
+    <h3>خواننده : {{concert.singer}}</h3>
+    <h3>مدت زمان کنسرت : {{concert.length}}</h3>
+</div>
+<div class="col-md-2">
+    <div class="imageBox">
+        <img src="{{ concert.poster.url }}">
+    </div>
+</div>
+<a href="{% url 'concert_app:concert_editing' concert.id %}">ویرایش پروفایل</a>
+{% endblock %}

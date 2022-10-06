@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row box">
+            <h1>{% block titlepage %}{% endblock %}</h1>
+            <ul class="btnul">
+                {% if user.is_authenticated %}
+                  <li><a class="btn btn-danger" href="{% url 'accounts:logout' %}">خروج</a></li>
+                  <li><a class="btn btn-success" href="{% url 'accounts:profile' %}">پروفایل</a></li>
+                {% else %}
+                  <li><a class="btn btn-success" href="{% url 'accounts:login' %}">ورود</a></li>
+                {% endif %}
+                <li><a class="btn btn-primary" href="{% url 'concert_app:concert_list' %}">صفحه اصلی</a></li>
+                <li><a class="btn btn-primary" href="{% url 'concert_app:location_list' %}">اطلاعات محل</a></li>
+                <li><a class="btn btn-primary" href="{% url 'concert_app:time_list' %}">لیست سانس ها</a></li>
+            </ul>
+          </div>
+
+      <div class="row">
+        {% block mainContent %}{% endblock %}
+      </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/fontawesome.js' %}"></script>
+  </body>
+

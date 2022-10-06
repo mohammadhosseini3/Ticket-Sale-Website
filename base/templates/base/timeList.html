@@ -1,0 +1,39 @@
+{% extends 'base/layout.html' %}
+
+{% block title %} TimeList {% endblock %}
+
+{% block titlepage %}
+لیست سانس ها
+{% endblock %}
+
+{% block mainContent %}
+{% if times %} 
+    {% for time in times %}
+        <div class="col-md-4">
+            <a>
+                <div class="timeBox">
+                    <h2>{{time.concert.name}}</h2>
+                    <p>{{time.concert.singer}}</p>
+                    <p>{{time.location.name}}</p>
+                    <p>{{time.get_jalali_date}}</p>
+                    <div 
+                    class="
+                    {% if time.status == 'Start' %}
+                        btn btn-success
+                    {% elif time.status == 'End' %}
+                        btn btn-danger
+                    {% elif time.status == 'Sales' %}
+                        btn btn-primary
+                    {% elif time.status == 'Cancle' %}
+                        btn default
+
+                    {% endif %}
+                    ">
+                        {{time.get_status_display}}
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %} 
+{% endif %}
+{% endblock %}

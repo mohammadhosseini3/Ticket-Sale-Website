@@ -1,0 +1,25 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title %} Profile {% endblock %}
+
+{% block titlepage %}
+پروفایل 
+{% endblock %}
+
+{% block mainContent %}
+    <div class="row">
+        <div class="col-md-8">
+            <p>نام و نام خانوادگی: {{profile.user.get_full_name}}</p>
+            <p>ایمیل: {{profile.user.email}}</p>
+            <p>جنسیت: {{profile.get_gender_display}}</p>
+            <p>مقدار اعتبار: {{profile.credit}} </p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{profile.profile_img.url}}">
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'accounts:edit_profile' %}">ویرایش پروفایل</a>
+    </div>
+{% endblock %}

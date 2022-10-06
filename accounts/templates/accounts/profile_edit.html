@@ -1,0 +1,29 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title %} Profile {% endblock %}
+
+{% block titlepage %}
+ویرایش پروفایل 
+{% endblock %}
+
+{% block mainContent %}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-8">
+            <p>نام: {{userEditForm.first_name}}</p>
+            <p>نام خانوادگی:{{userEditForm.last_name}} </p>
+            <p>ایمیل: {{userEditForm.email}} </p>
+            <p>جنسیت: {{profileEditForm.gender}}</p>
+            <p>مقدار اعتبار: {{profileEditForm.credit}} </p>
+        </div>
+        <div class="col-md-4">
+            <img src="{{profileImg.url}}">
+            {{profileEditForm.profile_img}}
+        </div>
+        <button class="btn btn-sm-success" type="submit">ویرایش</button>
+    </div>
+</form>
+<!-- {{userEditForm}} -->
+{% endblock %}

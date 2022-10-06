@@ -1,0 +1,34 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block titlepage %}
+جزییات کنسرت 
+{% endblock %}
+
+{% block mainContent %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mainborder">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>نام کنسرت: {{concertForm.name}}</p>
+                    <p>نام خواننده : {{concertForm.singer}}</p>
+                    <p>مدت زمان  :  {{concertForm.length}}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="imageBox">
+                        <img src="{{posterImage.url}}" >
+                    </div>
+                    {{concertForm.poster}}
+                </div>
+            </div>
+        </div>
+        <div class="buttonborder">
+            <button type="submit" class="btn btn-success">ذخیره</button>
+        </div>
+    
+    </form>
+{% endblock %}

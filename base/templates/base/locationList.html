@@ -1,0 +1,30 @@
+{% extends 'base/layout.html' %}
+
+{% block title %} LocationList {% endblock %}
+
+{% block titlepage %}
+    لیست موقعیت ها
+{% endblock %}
+
+{% block mainContent %}
+    {% if locations %} 
+        <div class="row location">
+            <div class="col-md-3">
+                <h3>سالن</h3>
+            </div>
+            <div class="col-md-9">
+                <h3>آدرس</h3>
+            </div>
+        </div>
+        {% for location in locations %}
+            <div class="row location">
+                <div class="col-md-3">
+                    {{location}}
+                </div>
+                <div class="col-md-9">
+                    {{location.address}}
+                </div>
+            </div>
+        {% endfor %} 
+    {% endif %}
+{% endblock %}
