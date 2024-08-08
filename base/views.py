@@ -4,6 +4,11 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 # Create your views here.
 
+
+def home(request):
+    context={}
+    return render(request,"base/home.html",context)
+
 @login_required
 def concertListView(request):
     searchForm = SearchForm(request.GET)
